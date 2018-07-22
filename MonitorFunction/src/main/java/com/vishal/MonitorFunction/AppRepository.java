@@ -69,19 +69,39 @@ public class AppRepository {
 		return a;
 	}
 	
-	public void create(App a1) {				
+	public void create(App a1) {
 		
-		String sql = "insert into app values(?,?,?)";
-		try {
-			PreparedStatement st = con.prepareStatement(sql);
-
-			st.setInt(1, a1.getId());
-			st.setString(2, a1.getName());
-			st.setString(3, a1.getType());
-			st.executeUpdate();
+		int id=a1.getId();
+		
+		App test=new App();
+		String sql1 = "select * from app where id= " + id;
+			try {
+				Statement st1 = con.createStatement();
+				ResultSet rs = st1.executeQuery(sql1);
+				if(rs.next()) {
+				test.setId(rs.getInt(1));
+				}
+			} catch (Exception e1) {
+				System.out.println(e1);
+			}
+			
+		if(test.getId()==0) {
+	
+			String sql = "insert into app values(?,?,?)";
+			try {
+				PreparedStatement st = con.prepareStatement(sql);
+	
+				st.setInt(1, a1.getId());
+				st.setString(2, a1.getName());
+				st.setString(3, a1.getType());
+				st.executeUpdate();
+			}
+			catch(Exception e) {
+				System.out.println(e);
+			}
 		}
-		catch(Exception e) {
-			System.out.println(e);
+		else {
+			System.out.println("Id already exist");
 		}
 	}
 }
