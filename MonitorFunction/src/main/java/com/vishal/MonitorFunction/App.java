@@ -8,6 +8,7 @@ public class App {
 	private int id;
 	private String name;
 	private String type;
+	private String timestamp;
 	
 	public int getId() {
 		return id;
@@ -27,9 +28,15 @@ public class App {
 	public void setType(String type) {
 		this.type = type;
 	}
+	public String getTimestamp() {
+		return timestamp;
+	}
+	public void setTimestamp(String timestamp) {
+		this.timestamp = timestamp;
+	}
 	@Override
 	public String toString() {
-		return "App [id=" + id + ", name=" + name + ", type=" + type + "]";
+		return "App [id=" + id + ", name=" + name + ", type=" + type + ", timestamp=" + timestamp + "]";
 	}
 
 }
