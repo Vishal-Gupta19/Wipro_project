@@ -25,10 +25,12 @@ public class Heartbeat extends TimerTask {
         System.out.println();
     }
 	
+	//AppsResource start = new AppsResource();
+	
 	//Sleep for 30 seconds
     public void completeTask() {	
         try {
-            Thread.sleep(5000);
+            Thread.sleep(5000);		//Initially running for 5sec for testing
             i++;
         } catch (InterruptedException e) {
             e.printStackTrace();
